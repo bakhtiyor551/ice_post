@@ -1,0 +1,336 @@
+/**
+ * Глобальные стили Ice POS: карточки, касса, таб-бар, адаптив.
+ */
+
+.ice-app {
+  --ice-safe-top: max(12px, env(safe-area-inset-top));
+  --ice-safe-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.ice-app ion-content {
+  --background: linear-gradient(165deg, var(--ice-bg-top) 0%, var(--ice-bg-base) 45%, var(--ice-bg-base) 100%);
+}
+
+.ice-app ion-page > ion-content.ion-padding {
+  --padding-start: max(14px, env(safe-area-inset-left));
+  --padding-end: max(14px, env(safe-area-inset-right));
+  --padding-top: max(14px, var(--ice-safe-top));
+  --padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .ice-app ion-page > ion-content.ion-padding {
+    --padding-start: max(24px, env(safe-area-inset-left));
+    --padding-end: max(24px, env(safe-area-inset-right));
+    --padding-top: max(20px, var(--ice-safe-top));
+  }
+}
+
+.ice-app ion-card {
+  --background: var(--ice-card-bg);
+  border-radius: var(--ice-radius-lg);
+  box-shadow: var(--ice-shadow-md);
+  border: 1px solid var(--ice-card-border);
+  margin-inline: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.ice-app ion-card-header {
+  padding-bottom: 8px;
+}
+
+.ice-app ion-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ion-color-dark);
+}
+
+.ice-app ion-card-header.md,
+.ice-app ion-card-header.ios {
+  padding-bottom: 4px;
+}
+
+.ion-palette-dark .ice-app ion-card-title {
+  color: var(--ion-text-color);
+}
+
+.ice-app ion-tab-bar.ice-tab-bar {
+  --background: var(--ice-tab-bar-bg);
+  border-top: 1px solid var(--ice-card-border);
+  box-shadow: 0 -4px 20px rgba(28, 36, 51, 0.06);
+  padding-bottom: var(--ice-safe-bottom);
+  min-height: 56px;
+  /** Планшет и шире: вкладки равномерно */
+  justify-content: space-around;
+}
+
+.ion-palette-dark .ice-app ion-tab-bar.ice-tab-bar {
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ice-app ion-tab-bar.ice-tab-bar ion-tab-button {
+  --color: var(--ice-text-muted);
+  --color-selected: var(--ion-color-primary);
+  font-size: 0.7rem;
+  max-width: none;
+}
+
+.ice-app ion-tab-bar.ice-tab-bar ion-icon {
+  font-size: 1.35rem;
+}
+
+@media (min-width: 480px) {
+  .ice-app ion-tab-bar.ice-tab-bar ion-tab-button {
+    font-size: 0.72rem;
+  }
+}
+
+/**
+ * Адаптивный tab-bar: на узких экранах — только иконки + горизонтальная прокрутка,
+ * чтобы 7–8 вкладок не сжимались. На широких — подписи и равномерное распределение.
+ */
+@media (max-width: 767px) {
+  .ice-app ion-tab-bar.ice-tab-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    min-height: 52px;
+    padding-inline: max(4px, env(safe-area-inset-left)) max(4px, env(safe-area-inset-right));
+    scrollbar-width: none;
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-tab-button {
+    flex: 0 0 auto;
+    min-width: 48px;
+    max-width: none;
+    padding-inline: 12px;
+    scroll-snap-align: start;
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-label {
+    display: none;
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-icon {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+/** Средние ширины: компактные подписи + прокрутка при необходимости */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ice-app ion-tab-bar.ice-tab-bar {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+    padding-inline: max(6px, env(safe-area-inset-left)) max(6px, env(safe-area-inset-right));
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-tab-button {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100px;
+    font-size: 0.65rem;
+    padding-inline: 6px;
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-label {
+    white-space: normal;
+    line-height: 1.15;
+    text-align: center;
+    max-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ice-app ion-tab-bar.ice-tab-bar {
+    overflow-x: visible;
+    padding-inline: max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-right));
+  }
+
+  .ice-app ion-tab-bar.ice-tab-bar ion-tab-button {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+/** Обёртка кассы: на телефоне колонки стеком, на планшете — две */
+.pos-layout {
+  max-width: var(--ice-max-content);
+  margin-inline: auto;
+}
+
+.pos-layout ion-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-product-grid ion-row {
+  margin-inline: -6px;
+}
+
+.pos-product-grid ion-col {
+  padding: 6px;
+}
+
+/** Кнопка товара на кассе */
+.pos-tile-button {
+  --border-radius: var(--ice-radius-md);
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  min-height: 72px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(30, 107, 138, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pos-tile-button::part(native) {
+  white-space: normal;
+}
+
+.pos-tile-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(30, 107, 138, 0.2);
+}
+
+@media (min-width: 600px) {
+  .pos-tile-button {
+    min-height: 84px;
+    font-size: 1rem;
+  }
+}
+
+/** Корзина: чёткие кнопки +/- */
+.pos-cart-qty ion-button {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.pos-total-line {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+.ion-palette-dark .pos-total-line {
+  color: var(--ion-color-secondary);
+}
+
+/** Экран входа */
+.login-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+
+.login-shell ion-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-brand {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.login-brand h1 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ion-color-primary);
+}
+
+.login-brand p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ice-text-muted);
+}
+
+.login-pin-pad ion-button {
+  --border-radius: 12px;
+  min-height: 52px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/** Сегменты отчётов — горизонтальная прокрутка на узком экране */
+.ice-scroll-segment {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.ice-scroll-segment ion-segment {
+  min-width: min-content;
+  flex: 1 1 auto;
+}
+
+.ice-filter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.ice-filter-actions ion-button {
+  margin: 0;
+}
+
+/** Заголовок блока внутри карточки */
+.ice-card-subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ice-text-muted);
+  margin: 0 0 10px;
+}
+
+/** Списки — воздух между строками */
+.ice-app ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+.ice-app ion-item {
+  --background: transparent;
+  --inner-padding-end: 8px;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  .ice-app ion-item {
+    font-size: 1rem;
+  }
+}

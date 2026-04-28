@@ -1,0 +1,102 @@
+/**
+ * Ice POS — тема: свежие ледяные тона, читаемая типографика.
+ * Поддержка светлой темы и класса .ion-palette-dark (системная тёмная).
+ */
+
+:root {
+  /** Основной — глубокий морской */
+  --ion-color-primary: #1e6b8a;
+  --ion-color-primary-rgb: 30, 107, 138;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1a5e79;
+  --ion-color-primary-tint: #357a96;
+
+  /** Вторичный — мятный акцент */
+  --ion-color-secondary: #3d9b8b;
+  --ion-color-secondary-rgb: 61, 155, 139;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #36887a;
+  --ion-color-secondary-tint: #50a596;
+
+  --ion-color-tertiary: #6b8cae;
+  --ion-color-tertiary-rgb: 107, 140, 174;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #5e7b99;
+  --ion-color-tertiary-tint: #7a98b6;
+
+  --ion-color-success: #2d8a5b;
+  --ion-color-success-rgb: 45, 138, 91;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #287950;
+  --ion-color-success-tint: #42966b;
+
+  --ion-color-warning: #c47a1f;
+  --ion-color-warning-rgb: 196, 122, 31;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #ac6b1b;
+  --ion-color-warning-tint: #ca8735;
+
+  --ion-color-danger: #c44a4a;
+  --ion-color-danger-rgb: 196, 74, 74;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #ac4141;
+  --ion-color-danger-tint: #ca5c5c;
+
+  --ion-color-medium: #7a8699;
+  --ion-color-medium-rgb: 122, 134, 153;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #6c7687;
+  --ion-color-medium-tint: #8792a3;
+
+  --ion-color-light: #f4f7fb;
+  --ion-color-light-rgb: 244, 247, 251;
+  --ion-color-light-contrast: #1c2433;
+  --ion-color-light-contrast-rgb: 28, 36, 51;
+  --ion-color-light-shade: #d7d9dd;
+  --ion-color-light-tint: #f5f8fb;
+
+  --ion-color-dark: #1c2433;
+  --ion-color-dark-rgb: 28, 36, 51;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #19202d;
+  --ion-color-dark-tint: #333a47;
+
+  /** Фон приложения */
+  --ice-bg-base: #e9f1f8;
+  --ice-bg-top: #dfeaf5;
+  --ice-card-bg: rgba(255, 255, 255, 0.92);
+  --ice-card-border: rgba(30, 107, 138, 0.12);
+  --ice-text-muted: #5a6578;
+  --ice-shadow-sm: 0 2px 8px rgba(28, 36, 51, 0.06);
+  --ice-shadow-md: 0 8px 24px rgba(28, 36, 51, 0.1);
+  --ice-radius-lg: 18px;
+  --ice-radius-md: 14px;
+  --ice-max-content: min(1200px, 100%);
+  --ice-tab-bar-bg: rgba(255, 255, 255, 0.96);
+
+  --ion-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --ion-default-font: var(--ion-font-family);
+}
+
+.ion-palette-dark {
+  --ice-bg-base: #12151c;
+  --ice-bg-top: #1a1f2a;
+  --ice-card-bg: rgba(30, 36, 48, 0.95);
+  --ice-card-border: rgba(255, 255, 255, 0.08);
+  --ice-text-muted: #9aa3b2;
+  --ice-shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.35);
+  --ice-shadow-md: 0 10px 32px rgba(0, 0, 0, 0.45);
+  --ice-tab-bar-bg: rgba(24, 28, 38, 0.96);
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
